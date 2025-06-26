@@ -17,29 +17,29 @@ In this work, we found that
 
 - In the second stage, we fix $s_{th}$ and set $s_{le}$ as a learnable parameter for optimization. As $s_{le}$ increases during training, the intervals between quantization levels widen, making the cost of mapping errors from floating-point weights to quantized values higher, thereby gradually reducing oscillation. The quantizer is:
 
-  $$
+  $
   \hat{w} =
   \begin{cases}
   \text{level}[0] & \text{if } w < \text{thresh}[0] \\\\
   \text{level}[i] & \text{if } \text{thresh}[i{-}1] \leq w < \text{thresh}[i] \\\\
   \text{level}[2^b{-}1] & \text{if } w \geq \text{thresh}[2^b{-}2]
   \end{cases}
-  $$
+  $
 
   where $i \in \{1, 2, \ldots, 2^b - 2\}$.  
   `thresh[i]` and `level[i]` represent the (i+1)-th threshold and level, respectively, in ascending numerical order.
 
   The optimized quantized weights are denoted as:
 
-  $$
+  $
   \tilde{w} = \hat{w} + w - w.\text{detach}(\cdot)
-  $$
+  $
 
 - In the third stage, we employ the *Oscillation Dampening* method outlined in [Nagel et al., 2022]. This method adds a penalty term to the loss function:
 
-  $$
+  $
   \mathcal{L} = \mathcal{L}_{\text{task}} + \lambda \mathcal{L}_{\text{dampen}}
-  $$
+  $
 
   where $\lambda$ is a hyperparameter. $\mathcal{L}_{\text{dampen}}$ pulls weights oscillating near the quantization thresholds away to suppress oscillation.
 
