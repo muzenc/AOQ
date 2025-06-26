@@ -60,7 +60,7 @@ bash run.sh architecture n_bits quantize_downsampling
 ## Toy Example
 
 <div align="center">
-    <img src="images/figure2.png" width="600">
+    <img src="images/figure2.png" width="700">
 </div>
 
 #### Run Command
