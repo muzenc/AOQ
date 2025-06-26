@@ -43,7 +43,7 @@ In this work, we found that
 
 ## Run
 
-#### 1. Requirements:
+### 1. Requirements:
 - python 3.9, pytorch>=2.0
 - torchvision
 - numpy
@@ -51,7 +51,7 @@ In this work, we found that
 - pillow
 - matplotlib
 
-#### 2. Run Command
+### 2. Run Command
 ```
 bash run.sh architecture n_bits quantize_downsampling
 ```
@@ -63,7 +63,7 @@ bash run.sh architecture n_bits quantize_downsampling
     <img src="images/figure2.png" width="700">
 </div>
 
-#### Run Command
+### Run Command
 
 ```
 bash run.sh
